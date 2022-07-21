@@ -18,7 +18,8 @@
                     "。",
                     ".",
                     "↓",
-                    ":"
+                    ":",
+                    "❗"
                 ],
                 "forceAppendPeriod": true,
                 "periodMark": "。"
