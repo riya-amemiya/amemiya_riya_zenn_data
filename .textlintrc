@@ -17,7 +17,8 @@
                 "allowPeriodMarks": [
                     "。",
                     ".",
-                    "↓"
+                    "↓",
+                    ":"
                 ],
                 "forceAppendPeriod": true,
                 "periodMark": "。"
