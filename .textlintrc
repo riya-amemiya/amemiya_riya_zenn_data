@@ -24,8 +24,15 @@
                 "forceAppendPeriod": true,
                 "periodMark": "。"
             },
+            "ja-no-successive-word": false,
             "ja-no-weak-phrase": false,
             "max": 100,
+            "max-kanji-continuous-len": {
+                "max": 10
+            },
+            "max-ten": {
+                "max": 10
+            },
             "no-exclamation-question-mark": {
                 "allowFullWidthExclamation": true,
                 "allowFullWidthQuestion": true,
