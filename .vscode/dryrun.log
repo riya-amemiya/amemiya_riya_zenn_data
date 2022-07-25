@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/yuta/Desktop/programming/Zenn/free'
+npx zenn new:article
+make: Leaving directory `/Users/yuta/Desktop/programming/Zenn/free'
+ 
