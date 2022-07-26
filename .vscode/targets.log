@@ -6,11 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
-make: *** No rule to make target `all'.  Stop.
 
-
-# Make data base, printed on Mon Jul 25 11:19:15 2022
+# Make data base, printed on Wed Jul 27 08:56:42 2022
 
 # Variables
 
@@ -153,7 +150,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 18698
+VSCODE_PID = 61204
 # variable set hash-table stats:
 # Load=70/1024=7%, Rehash=0, Collisions=3/94=3%
 
@@ -239,6 +236,8 @@ article:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jul 25 11:19:15 2022
+# Finished Make data base on Wed Jul 27 08:56:42 2022
 
  
+make: *** No rule to make target `all'.  Stop.
+
