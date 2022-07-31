@@ -44,6 +44,9 @@
                 "preferInHeader": "",
                 "preferInList": "である",
                 "strict": false
+            },
+            "sentence-length": {
+                "max": 150
             }
         }
     }
