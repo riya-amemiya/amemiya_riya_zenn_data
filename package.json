@@ -1,0 +1,22 @@
+{
+    "name": "amemiya_riya_zeen_data",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "zenn-cli": "^0.1.109"
+    },
+    "devDependencies": {
+        "textlint": "^12.1.1",
+        "textlint-rule-ja-space-around-code": "^2.2.0",
+        "textlint-rule-preset-ja-spacing": "^2.2.0",
+        "textlint-rule-preset-ja-technical-writing": "^7.0.0",
+        "textlint-rule-spellcheck-tech-word": "^5.0.0"
+    }
+}

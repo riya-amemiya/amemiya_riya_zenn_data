@@ -1,0 +1,55 @@
+{
+    "filters": {},
+    "rules": {
+        "preset-ja-spacing": {
+            "ja-space-around-code": {
+                "after": true,
+                "before": true
+            },
+            "ja-space-between-half-and-full-width": {
+                "space": "never"
+            },
+            "preset-ja-technical-writing": true,
+            "spellcheck-tech-word": true
+        },
+        "preset-ja-technical-writing": {
+            "ja-no-mixed-period": {
+                "allowPeriodMarks": [
+                    "。",
+                    ".",
+                    "↓",
+                    ":",
+                    "❗",
+                    "、"
+                ],
+                "forceAppendPeriod": true,
+                "periodMark": "。"
+            },
+            "ja-no-successive-word": false,
+            "ja-no-weak-phrase": false,
+            "max": 100,
+            "max-kanji-continuous-len": {
+                "max": 10
+            },
+            "max-ten": {
+                "max": 10
+            },
+            "no-exclamation-question-mark": {
+                "allowFullWidthExclamation": true,
+                "allowFullWidthQuestion": true,
+                "allowHalfWidthExclamation": true,
+                "allowHalfWidthQuestion": true
+            },
+            "no-mix-dearu-desumasu": {
+                "preferInBody": "ですます",
+                "preferInHeader": "",
+                "preferInList": "である",
+                "strict": false
+            },
+            "sentence-length": {
+                "max": 150
+            },
+            "no-doubled-joshi": false
+        }
+    }
+}
