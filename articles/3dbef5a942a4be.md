@@ -36,9 +36,7 @@ interface State {
 const [state, dispatch] = useReducer(
   (
    state: State,
-   newState: {
-    [key in keyof State]?: State[key];
-   },
+   newState: Partial<State>,
   ) => ({ ...state, ...newState }),
   { name: "", email: "" }
 );
@@ -94,7 +92,7 @@ const initialState: State = { name: "", email: "" };
 export const reducer = (
  state: State,
  action: {
-  type: "UPDATE_NAME" | "UPDATE_EMAIL";
+  type: "UPDATE_NAME" | "UPDATE_EMAIL" | "RESET";
   payload: string;
  },
 ) => {
