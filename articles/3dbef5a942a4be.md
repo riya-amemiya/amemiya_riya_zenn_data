@@ -77,11 +77,11 @@ dispatch({ type: "UPDATE_NAME", payload: "hoge" });
 
 ### useReducerのメリット
 
-useReducerを使うことで、一つのstateで複数の状態を管理できます。
+useReducerを使うことで、1つのstateで複数の状態を管理できます。
 一部の状態だけ更新したい場合は、reducer関数で更新したい状態だけ更新するようにします。
 また、reducer関数はuseReducerの外に書くことができます。
 これにより、コンポーネントの見通しが良くなります。
-複数コンポーネントでreducer関数を共有することもできます。
+複数コンポーネントでreducer関数を共有できます。
 
 ```tsx
 interface State {
