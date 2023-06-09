@@ -49,7 +49,8 @@
             "sentence-length": {
                 "max": 150
             },
-            "no-doubled-joshi": false
+            "no-doubled-joshi": false,
+            "no-hankaku-kana": false
         }
     }
 }
