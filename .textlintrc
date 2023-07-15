@@ -13,18 +13,7 @@
             "spellcheck-tech-word": true
         },
         "preset-ja-technical-writing": {
-            "ja-no-mixed-period": {
-                "allowPeriodMarks": [
-                    "。",
-                    ".",
-                    "↓",
-                    ":",
-                    "❗",
-                    "、"
-                ],
-                "forceAppendPeriod": true,
-                "periodMark": "。"
-            },
+            "ja-no-mixed-period": false,
             "ja-no-successive-word": false,
             "ja-no-weak-phrase": false,
             "max": 100,
@@ -49,7 +38,8 @@
             "sentence-length": {
                 "max": 150
             },
-            "no-doubled-joshi": false
+            "no-doubled-joshi": false,
+            "no-hankaku-kana": false
         }
     }
 }

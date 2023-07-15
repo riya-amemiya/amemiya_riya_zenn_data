@@ -16,6 +16,7 @@ useState便利ですよね？
 Reactの状態管理といったらこれを思い浮かべると思います。
 ですが状態が増えたらどうしますか？
 複数の状態を更新するhookを作るときにsetStateを引数にいくつも取る？
+Objectを持ったstateを更新するときに、Objectの中身を全部書く？
 気がついたら技術負債の完成です。
 useReducerを使いましょう。
 
@@ -42,6 +43,28 @@ const [state, dispatch] = useReducer(
 );
 
 dispatch({ name: "hoge" });
+```
+
+#### 簡単なバリデーション
+
+```tsx
+interface State {
+ name: string;
+ email: string;
+}
+
+const [state, dispatch] = useReducer(
+  (
+   state: State,
+   newState: Partial<State>,
+  ) => {
+   if (newState.name && newState.name.length > 10) {
+    return { ...state, ...newState };
+   }
+   return { ...state };
+  },
+  { name: "", email: "" }
+);
 ```
 
 #### Redux風
