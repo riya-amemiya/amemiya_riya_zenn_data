@@ -11,15 +11,14 @@ jobs:
         steps:
             - name: Switch to pull request branch
               uses: actions/checkout@v3
-            - name: Setup node with cache
-              uses: actions/setup-node@v3
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v1
               with:
-                  node-version: 14
-                  cache: 'npm'
+                  bun-version: 0.7.0
             - name: Install packages via packages.json
-              run: npm install
+              run: bun i
             - name: Run textlint (articles)
-              run: npx textlint ./articles -o ./.textlint.log | true
+              run: bun run textlint ./articles -o ./.textlint.log | true
             - name: Report if textlint finds problems
               run: |
                   if [ -e ./.textlint.log ]; then
