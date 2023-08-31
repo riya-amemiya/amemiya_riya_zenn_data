@@ -35,7 +35,7 @@ publication_name: "gmomedia"
 `システム環境設定 > 共有` からアドレスを確認します。
 以下のようなアドレスが表示されます。
 
-:::details画像
+:::details 画像
 
 ![](/images/2adadb54bb5c4c/mac_address.png)
 
@@ -50,7 +50,7 @@ publication_name: "gmomedia"
 `システム環境設定 > ネットワーク > Wi-Fi` からアドレスを確認します。
 以下のようなアドレスが表示されます。
 
-:::details画像
+:::details 画像
 
 ![](/images/2adadb54bb5c4c/mac_wifi.jpg)
 
@@ -66,7 +66,7 @@ Wifiの設定から、プロキシを手動に変更します。
 
 `wifi横のiマーク > プロキシを構成 > 手動`
 
-:::details画像
+:::details 画像
 
 ![](/images/2adadb54bb5c4c/iphone_wifi.jpg)
 
@@ -111,7 +111,7 @@ iPhoneの設定から、Safariの設定を開きます。
 その後、MacでSafariを開き、画面上のツールバーから、`開発 > [iPhoneの名前] > [サイト名]` から開発者ツールを開きます。
 これで実機で動かしながら、コンソールやCSSをいじることができます！
 
-:::details画像
+:::details 画像
 
 ![](/images/2adadb54bb5c4c/web.png)
 
