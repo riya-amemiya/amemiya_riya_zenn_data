@@ -13,6 +13,7 @@
         "zenn-cli": "^0.1.109"
     },
     "devDependencies": {
+        "@biomejs/biome": "1.0.0",
         "textlint": "^12.1.1",
         "textlint-rule-ja-space-around-code": "^2.2.0",
         "textlint-rule-preset-ja-spacing": "^2.2.0",
