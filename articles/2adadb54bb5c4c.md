@@ -21,9 +21,9 @@ publication_name: "gmomedia"
 ## 環境
 
 記事執筆時の環境は以下の通りです。
-(後日Ventura版も書きます)
 
 - Mac OS Monterey 12.6.7
+- Mac OS 13.4.1
 - iOS 16.6
 
 ## MacのIPアドレスを確認する
@@ -33,6 +33,7 @@ publication_name: "gmomedia"
 ### iPhoneからMacにアクセスするためのアドレス
 
 `システム環境設定 > 共有` からアドレスを確認します。
+Ventureの場合は、`一般 > 共有 > ローカルホスト名` から確認できます。
 以下のようなアドレスが表示されます。
 
 :::details 画像
@@ -48,6 +49,7 @@ publication_name: "gmomedia"
 ### プロキシを設定するためのアドレス
 
 `システム環境設定 > ネットワーク > Wi-Fi` からアドレスを確認します。
+Ventureの場合は、`システム環境設定 > ネットワーク > Wi-Fi > 詳細` から確認できます。
 以下のようなアドレスが表示されます。
 
 :::details 画像
