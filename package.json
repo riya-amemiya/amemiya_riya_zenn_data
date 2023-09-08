@@ -10,13 +10,14 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "zenn-cli": "^0.1.109"
+        "zenn-cli": "^0.1.144"
     },
     "devDependencies": {
-        "textlint": "^12.1.1",
+        "@biomejs/biome": "1.0.0",
+        "textlint": "^13.3.3",
         "textlint-rule-ja-space-around-code": "^2.2.0",
-        "textlint-rule-preset-ja-spacing": "^2.2.0",
-        "textlint-rule-preset-ja-technical-writing": "^7.0.0",
+        "textlint-rule-preset-ja-spacing": "^2.3.0",
+        "textlint-rule-preset-ja-technical-writing": "^8.0.0",
         "textlint-rule-spellcheck-tech-word": "^5.0.0"
     }
 }
