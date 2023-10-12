@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "zenn-cli": "^0.1.145"
+    "zenn-cli": "^0.1.147"
   },
   "devDependencies": {
     "@biomejs/biome": "1.0.0",
