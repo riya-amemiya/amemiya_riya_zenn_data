@@ -24,6 +24,7 @@ publication_name: "gmomedia"
 
 - Mac OS Monterey 12.6.7
 - Mac OS 13.4.1
+- Mac OS Sonoma 14.2.1
 - iOS 16.6
 
 ## MacのIPアドレスを確認する
@@ -34,11 +35,18 @@ publication_name: "gmomedia"
 
 `システム環境設定 > 共有` からアドレスを確認します。
 Ventureの場合は、`一般 > 共有 > ローカルホスト名` から確認できます。
+SonomaもVentureと同じです。
 以下のようなアドレスが表示されます。
 
 :::details 画像
 
 ![](/images/2adadb54bb5c4c/mac_address.png)
+
+:::
+
+:::details Sonoma画像
+
+![](/images/2adadb54bb5c4c/mac_sonoma_address.png)
 
 :::
 
@@ -50,6 +58,7 @@ Ventureの場合は、`一般 > 共有 > ローカルホスト名` から確認�
 
 `システム環境設定 > ネットワーク > Wi-Fi` からアドレスを確認します。
 Ventureの場合は、`システム環境設定 > ネットワーク > Wi-Fi > 詳細` から確認できます。
+Sonomaの場合は、`Wifi > 詳細` から確認できます。
 以下のようなアドレスが表示されます。
 
 :::details 画像
@@ -61,6 +70,12 @@ Ventureの場合は、`システム環境設定 > ネットワーク > Wi-Fi > �
 ```txt
 IPアドレスXXX.XXX.XXX.XXXが設定されています。
 ```
+
+:::details Sonoma画像
+
+![](/images/2adadb54bb5c4c/mac_sonoma_wifi.jpg)
+
+:::
 
 ## iPhoneのWifiのプロキシを設定する
 
