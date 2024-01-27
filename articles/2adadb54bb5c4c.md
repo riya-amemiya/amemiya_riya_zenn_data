@@ -67,15 +67,15 @@ Sonomaの場合は、`Wifi > 詳細` から確認できます。
 
 :::
 
+:::details Sonoma画像
+
+![](/images/2adadb54bb5c4c/mac_sonoma_wifi.png)
+
+:::
+
 ```txt
 IPアドレスXXX.XXX.XXX.XXXが設定されています。
 ```
-
-:::details Sonoma画像
-
-![](/images/2adadb54bb5c4c/mac_sonoma_wifi.jpg)
-
-:::
 
 ## iPhoneのWifiのプロキシを設定する
 
