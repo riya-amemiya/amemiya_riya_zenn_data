@@ -13,6 +13,14 @@ publication_name: "gmomedia"
 修正や追加等はコメントまたはGitHubで編集リクエストをお待ちしております。
 :::
 
+:::message alert
+公式ドキュメントには以下のように書かれています。
+THIS COMMAND IS EXPERIMENTAL. THE BEHAVIOR MAY CHANGE.
+和訳：このコマンドは実験的です。動作が変更される可能性があります。
+この記事の内容と違う場合があるので、ご注意ください。
+この記事は2024年2月28日時点の情報です。
+:::
+
 ## え？まだgit checkoutしてるの？
 
 git checkoutといえば、ブランチを切り替えたり、git addしたファイルを元に戻したりするコマンドですが、それはもう古いです。
