@@ -4,7 +4,7 @@
     "": {
       "name": "amemiya_riya_zeen_data",
       "dependencies": {
-        "zenn-cli": "^0.1.158",
+        "zenn-cli": "^0.1.159",
       },
       "devDependencies": {
         "@biomejs/biome": "1.9.4",
@@ -651,7 +651,7 @@
 
     "xtend": ["xtend@4.0.2", "", {}, ""],
 
-    "zenn-cli": ["zenn-cli@0.1.158", "", { "bin": { "zenn": "dist/server/zenn.js" } }, "sha512-bvQ96fK+9qw+SKxEmncg/rYU+1u0V6Bh+HuV8By+u4L+VZt/jn9hFyL+KWj/2ncSBDtcEBo6XLsCdNLxlUo+RA=="],
+    "zenn-cli": ["zenn-cli@0.1.159", "", { "bin": { "zenn": "dist/server/zenn.js" } }, "sha512-a4/Lkg3DnxWlYh2Z0abuvvmpQc0BnfTQrVyNQxYm+IOrwGJepZabwWTT0Q3eZ3r7hAV/xd8MZsmZL3y3pzMpAA=="],
 
     "zlibjs": ["zlibjs@0.3.1", "", {}, ""],
 
@@ -785,19 +785,13 @@
 
     "set-function-length/get-intrinsic/has-proto": ["has-proto@1.0.3", "", {}, ""],
 
-    "set-function-length/gopd/get-intrinsic": ["get-intrinsic@1.2.4", "", { "dependencies": { "es-errors": "^1.3.0", "function-bind": "^1.1.2", "has-proto": "^1.0.1", "has-symbols": "^1.0.3", "hasown": "^2.0.0" } }, ""],
-
     "spellcheck-technical-word/structured-source/boundary": ["boundary@1.0.1", "", {}, ""],
 
     "textlint-rule-ja-no-redundant-expression/@textlint/regexp-string-matcher/escape-string-regexp": ["escape-string-regexp@2.0.0", "", {}, ""],
 
     "textlint-rule-ja-no-successive-word/@textlint/regexp-string-matcher/escape-string-regexp": ["escape-string-regexp@2.0.0", "", {}, ""],
 
-    "textlint-rule-ja-no-successive-word/@textlint/regexp-string-matcher/execall": ["execall@2.0.0", "", { "dependencies": { "clone-regexp": "^2.1.0" } }, ""],
-
     "textlint-rule-ja-unnatural-alphabet/@textlint/regexp-string-matcher/escape-string-regexp": ["escape-string-regexp@2.0.0", "", {}, ""],
-
-    "textlint-rule-ja-unnatural-alphabet/@textlint/regexp-string-matcher/execall": ["execall@2.0.0", "", { "dependencies": { "clone-regexp": "^2.1.0" } }, ""],
 
     "textlint-rule-max-comma/textlint-util-to-string/@textlint/ast-node-types": ["@textlint/ast-node-types@13.4.1", "", {}, ""],
 
@@ -824,8 +818,6 @@
     "textlint-rule-no-doubled-joshi/textlint-util-to-string/unified": ["unified@8.4.2", "", { "dependencies": { "bail": "^1.0.0", "extend": "^3.0.0", "is-plain-obj": "^2.0.0", "trough": "^1.0.0", "vfile": "^4.0.0" } }, ""],
 
     "textlint-rule-no-exclamation-question-mark/@textlint/regexp-string-matcher/escape-string-regexp": ["escape-string-regexp@2.0.0", "", {}, ""],
-
-    "textlint-rule-no-exclamation-question-mark/@textlint/regexp-string-matcher/execall": ["execall@2.0.0", "", { "dependencies": { "clone-regexp": "^2.1.0" } }, ""],
 
     "textlint-rule-no-mix-dearu-desumasu/textlint-rule-helper/@textlint/ast-node-types": ["@textlint/ast-node-types@13.4.1", "", {}, ""],
 
@@ -879,16 +871,6 @@
 
     "read-pkg-up/read-pkg/path-type/pify": ["pify@3.0.0", "", {}, ""],
 
-    "set-function-length/gopd/get-intrinsic/function-bind": ["function-bind@1.1.2", "", {}, ""],
-
-    "set-function-length/gopd/get-intrinsic/has-proto": ["has-proto@1.0.3", "", {}, ""],
-
-    "textlint-rule-ja-no-successive-word/@textlint/regexp-string-matcher/execall/clone-regexp": ["clone-regexp@2.2.0", "", { "dependencies": { "is-regexp": "^2.0.0" } }, ""],
-
-    "textlint-rule-ja-unnatural-alphabet/@textlint/regexp-string-matcher/execall/clone-regexp": ["clone-regexp@2.2.0", "", { "dependencies": { "is-regexp": "^2.0.0" } }, ""],
-
-    "textlint-rule-no-exclamation-question-mark/@textlint/regexp-string-matcher/execall/clone-regexp": ["clone-regexp@2.2.0", "", { "dependencies": { "is-regexp": "^2.0.0" } }, ""],
-
     "textlint-rule-preset-jtf-style/regexp.prototype.flags/call-bind/get-intrinsic": ["get-intrinsic@1.2.4", "", { "dependencies": { "es-errors": "^1.3.0", "function-bind": "^1.1.2", "has-proto": "^1.0.1", "has-symbols": "^1.0.3", "hasown": "^2.0.0" } }, ""],
 
     "textlint-rule-preset-jtf-style/regexp.prototype.flags/define-properties/has-property-descriptors": ["has-property-descriptors@1.0.2", "", { "dependencies": { "es-define-property": "^1.0.0" } }, ""],
@@ -902,12 +884,6 @@
     "textlint-tester/@textlint/textlint-plugin-markdown/@textlint/markdown-to-ast/debug": ["debug@4.3.4", "", { "dependencies": { "ms": "2.1.2" } }, ""],
 
     "textlint-tester/@textlint/textlint-plugin-text/@textlint/text-to-ast/@textlint/ast-node-types": ["@textlint/ast-node-types@13.3.3", "", {}, ""],
-
-    "textlint-rule-ja-no-successive-word/@textlint/regexp-string-matcher/execall/clone-regexp/is-regexp": ["is-regexp@2.1.0", "", {}, ""],
-
-    "textlint-rule-ja-unnatural-alphabet/@textlint/regexp-string-matcher/execall/clone-regexp/is-regexp": ["is-regexp@2.1.0", "", {}, ""],
-
-    "textlint-rule-no-exclamation-question-mark/@textlint/regexp-string-matcher/execall/clone-regexp/is-regexp": ["is-regexp@2.1.0", "", {}, ""],
 
     "textlint-rule-preset-jtf-style/regexp.prototype.flags/call-bind/get-intrinsic/function-bind": ["function-bind@1.1.2", "", {}, ""],
 
