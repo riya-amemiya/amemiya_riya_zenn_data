@@ -4,7 +4,7 @@
     "": {
       "name": "amemiya_riya_zeen_data",
       "dependencies": {
-        "zenn-cli": "^0.2.3",
+        "zenn-cli": "^0.2.4",
       },
       "devDependencies": {
         "@biomejs/biome": "2.2.6",
@@ -883,7 +883,7 @@
 
     "xtend": ["xtend@4.0.2", "", {}, "sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ=="],
 
-    "zenn-cli": ["zenn-cli@0.2.3", "", { "bin": { "zenn": "dist/server/zenn.js" } }, "sha512-ghYpg2foOeFExvtWKDFSjCsq+utYf84jApw37Wli1MnSAE1la40GZ47kXQDQKeh/1LV2AT0LDMYWbmE64Z4ZSg=="],
+    "zenn-cli": ["zenn-cli@0.2.4", "", { "bin": { "zenn": "dist/server/zenn.js" } }, "sha512-TnKSyYw5Ykh/Y9nRElfJ+Eo0hKFjcPNAuX7ymJLwD6ZuFTKzYeJFnXjxJjTWEnZOcXwhfZf4nt/UGvS7wz6Y4A=="],
 
     "zlibjs": ["zlibjs@0.3.1", "", {}, "sha512-+J9RrgTKOmlxFSDHo0pI1xM6BLVUv+o0ZT9ANtCxGkjIVCCUdx9alUF8Gm+dGLKbkkkidWIHFDZHDMpfITt4+w=="],
 
