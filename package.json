@@ -18,7 +18,7 @@
   "dependencies": {
     "@mitata/counters": "0.0.8",
     "mitata": "1.0.34",
-    "zenn-cli": "0.2.4"
+    "zenn-cli": "0.2.8"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.6",
