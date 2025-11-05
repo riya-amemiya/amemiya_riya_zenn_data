@@ -3,7 +3,7 @@ title: "RFC 5321/5322に沿ったEmail正規表現を書く"
 emoji: "⛳"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["regex", "email", "rfc", "typescript"]
-published: false
+published: true
 ---
 
 ## はじめに
