@@ -2,7 +2,6 @@ name: run-textlint
 on:
     pull_request_target:
         types: [opened, synchronize]
-        paths: ['articles/*.md']
     workflow_dispatch:
 jobs:
     run-textlint:
