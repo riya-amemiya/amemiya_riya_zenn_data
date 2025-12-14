@@ -1,95 +1,107 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.8.1/schema.json",
-	"files": {
-		"ignore": [
-			"node_modules",
-			"module",
-			"*.json",
-			"doc",
-			"coverage"
-		]
-	},
-	"formatter": {
-		"enabled": true,
-		"formatWithErrors": false,
-		"indentStyle": "space",
-		"lineWidth": 80
-	},
-	"javascript": {
-		"globals": [
-			"describe",
-			"beforeEach",
-			"it",
-			"expect",
-			"test",
-			"beforeAll",
-			"afterEach",
-			"afterAll",
-			"Bun"
-		]
-	},
-	"json": {
-		"formatter": {
-			"enabled": false
-		}
-	},
-	"linter": {
-		"enabled": true,
-		"ignore": [
-			"tests",
-			".dependency-cruiser.js"
-		],
-		"rules": {
-			"a11y": {
-				"noSvgWithoutTitle": "warn"
-			},
-			"complexity": {
-				"noExcessiveCognitiveComplexity": "off",
-				"noVoid": "error",
-				"useSimplifiedLogicExpression": "error"
-			},
-			"correctness": {
-				"noConstantMathMinMaxClamp": "error",
-				"noUndeclaredVariables": "warn",
-				"noUnusedVariables": "warn",
-				"useExhaustiveDependencies": "warn",
-				"useHookAtTopLevel": "error"
-			},
-			"nursery": {
-				"noDoneCallback": "error",
-				"noDuplicateElseIf": "error",
-				"noDuplicateJsonKeys": "error",
-				"noEvolvingTypes": "error",
-				"noMisplacedAssertion": "error"
-			},
-			"recommended": true,
-			"style": {
-				"noImplicitBoolean": "warn",
-				"noNamespaceImport": "error",
-				"noNegationElse": "error",
-				"noParameterAssign": "off",
-				"noParameterProperties": "off",
-				"noShoutyConstants": "warn",
-				"useBlockStatements": "error",
-				"useFragmentSyntax": "error",
-				"useNamingConvention": {
-					"level": "off",
-					"options": {
-						"enumMemberCase": "CONSTANT_CASE",
-						"strictCase": true
-					}
-				},
-				"useShorthandArrayType": "error",
-				"useShorthandAssign": "error",
-				"useSingleCaseStatement": "error"
-			},
-			"suspicious": {
-				"noEmptyBlockStatements": "error",
-				"noSkippedTests": "error"
-			}
-		}
-	},
-	"organizeImports": {
-		"enabled": false
-	}
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "files": {
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/module",
+      "!**/*.json",
+      "!**/doc",
+      "!**/coverage",
+      "!**/dist"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "lineWidth": 80
+  },
+  "javascript": {
+    "globals": [
+      "describe",
+      "beforeEach",
+      "it",
+      "expect",
+      "test",
+      "beforeAll",
+      "afterEach",
+      "afterAll",
+      "Bun"
+    ]
+  },
+  "json": {
+    "formatter": {
+      "enabled": true
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "includes": ["**", "!**/tests", "!**/.dependency-cruiser.js"],
+    "rules": {
+      "a11y": {
+        "noSvgWithoutTitle": "warn"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": "off",
+        "noVoid": "error",
+        "useSimplifiedLogicExpression": "error"
+      },
+      "correctness": {
+        "noConstantMathMinMaxClamp": "error",
+        "noUndeclaredVariables": "warn",
+        "noUnusedVariables": "warn",
+        "useExhaustiveDependencies": "warn",
+        "useHookAtTopLevel": "error",
+        "noSwitchDeclarations": "error"
+      },
+      "nursery": {},
+      "recommended": true,
+      "style": {
+        "noImplicitBoolean": "warn",
+        "noNegationElse": "error",
+        "noParameterAssign": "off",
+        "noParameterProperties": "off",
+        "noShoutyConstants": "warn",
+        "useBlockStatements": "error",
+        "useFragmentSyntax": "error",
+        "useNamingConvention": {
+          "level": "off",
+          "options": {
+            "conventions": [
+              {
+                "selector": {
+                  "kind": "enumMember"
+                },
+                "formats": ["CONSTANT_CASE"]
+              }
+            ],
+            "strictCase": true
+          }
+        },
+        "useShorthandAssign": "error",
+        "useConsistentArrayType": {
+          "level": "error",
+          "options": {
+            "syntax": "shorthand"
+          }
+        }
+      },
+      "suspicious": {
+        "noEmptyBlockStatements": "error",
+        "noSkippedTests": "error",
+        "noDuplicateElseIf": "error"
+      },
+      "performance": {
+        "noNamespaceImport": "error"
+      }
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "off"
+      }
+    }
+  }
 }
