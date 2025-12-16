@@ -197,7 +197,7 @@ subject.next(2);
 
 ### BehaviorSubjectは最新値を保持する
 
-初期値を持ち、購読時に最新値を即座に受け取れます。状態管理に適しています。
+初期値を持ち、購読時に最新値を即座に受け取れます。
 
 ```typescript
 import { BehaviorSubject } from 'rxjs';
@@ -210,6 +210,8 @@ subject.next(1);
 
 subject.subscribe(v => console.log('B:', v));
 ```
+
+BehaviorSubjectは「現在の状態」をストリームとして表現します。アプリケーションの状態は時間とともに変化する値の連続であり、これもまたストリームです。
 
 ### ReplaySubjectは過去の値を再生する
 
@@ -227,163 +229,105 @@ subject.next(3);
 subject.subscribe(console.log);
 ```
 
-バッファサイズが2なので、購読時には直近の2つの値（2と3）のみが再生されます。
+バッファサイズが2なので、購読時には直近の2つの値（2と3）のみが再生されます。ReplaySubjectは「過去のイベント履歴」をストリームとして扱いたい場合に使います。
 
-## オペレーター
+### Subjectがストリームの世界をつなぐ
+
+Subjectの本質的な役割は、命令的なコードとストリームの世界をつなぐ架け橋です。
+
+既存のコールバックベースのAPIや、フレームワーク固有のイベントシステムなど、直接Observableとして扱えないデータソースがあります。Subjectを使えば、それらを手動でストリームに変換できます。
+
+```typescript
+const buttonClicks$ = new Subject<MouseEvent>();
+
+legacyButton.onClick = (event) => {
+  buttonClicks$.next(event);
+};
+
+buttonClicks$.pipe(
+  debounceTime(300)
+).subscribe(handleClick);
+```
+
+「すべてがストリーム」という世界観において、Subjectはストリームではないものをストリーム化する変換器としての役割を持ちます。
+
+## オペレーターが実現する合成の力
 
 オペレーターはストリームを変換する純粋関数です。元のストリームを変更せず、新しいストリームを返します。
 
-### 変換系オペレーター
+ここで重要なのは、オペレーターの個々のAPIを覚えることではありません。「すべてがストリーム」という統一的な抽象化があるからこそ、あらゆるデータソースに対して同じオペレーターを適用できるという点です。
 
-#### map: 各値を変換
+### 異なるデータソースに同じ処理を適用できる
+
+クリックイベント、HTTPレスポンス、WebSocketメッセージ、これらは本来異なるAPIで扱う必要がありました。しかしすべてがObservableになれば、同じオペレーターで処理できます。
 
 ```typescript
-import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { fromEvent, interval } from 'rxjs';
+import { map, filter, take } from 'rxjs/operators';
 
-of(1, 2, 3).pipe(
-  map(x => x * 10)
-).subscribe(console.log);
+const transform = <T>(source$: Observable<T>) => source$.pipe(
+  filter(x => x != null),
+  take(10)
+);
+
+transform(fromEvent(button, 'click'));
+transform(interval(1000));
+transform(webSocketMessages$);
 ```
 
-#### switchMap: 内部Observableをキャンセルして切り替え
+データソースが何であれ、ストリームとして扱えばすべて同じ方法で変換できます。これがストリームという抽象化の力です。
 
-新しい値が来たら前の処理をキャンセルして切り替えます。
+### ストリームの結合で複雑な要件を宣言的に記述する
 
-```typescript
-import { interval } from 'rxjs';
-import { switchMap, take } from 'rxjs/operators';
+複数のストリームを組み合わせることで、複雑な要件を宣言的に表現できます。
 
-interval(500).pipe(
-  take(3),
-  switchMap(() => interval(100).pipe(take(5)))
-).subscribe(console.log);
-```
-
-#### mergeMap: 内部Observableを並列処理
-
-すべての内部Observableを同時に購読します。
+「ユーザー情報と設定の両方が揃ったら画面を表示する」という要件を考えてみます。
 
 ```typescript
-import { interval } from 'rxjs';
-import { mergeMap, take } from 'rxjs/operators';
-
-interval(500).pipe(
-  take(3),
-  mergeMap(() => interval(100).pipe(take(5)))
-).subscribe(console.log);
-```
-
-#### concatMap: 内部Observableを順番に処理
-
-前の処理が完了するまで次の処理を待ち、順序を保証して処理します。
-
-```typescript
-import { from, of } from 'rxjs';
-import { concatMap, delay } from 'rxjs/operators';
-
-from([1, 2, 3]).pipe(
-  concatMap(x => of(x).pipe(delay(1000)))
-).subscribe(console.log);
-```
-
-### フィルタリング系オペレーター
-
-#### filter: 条件に合う値のみ通す
-
-```typescript
-import { of } from 'rxjs';
+import { combineLatest } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-of(1, 2, 3, 4, 5).pipe(
-  filter(x => x % 2 === 0)
-).subscribe(console.log);
-```
+const user$ = fetchUser();
+const settings$ = fetchSettings();
 
-#### debounceTime: 一定時間入力がないときに発行
-
-連続した入力の最後だけを処理したい場合に使います。
-
-```typescript
-import { fromEvent } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
-
-fromEvent(input, 'input').pipe(
-  debounceTime(300)
-).subscribe(console.log);
-```
-
-#### distinctUntilChanged: 前回と異なる値のみ発行
-
-同じ値が連続する場合に重複を除去します。
-
-```typescript
-import { of } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
-
-of(1, 1, 2, 2, 3, 1).pipe(
-  distinctUntilChanged()
-).subscribe(console.log);
-```
-
-#### take: 最初のn個で完了
-
-無限ストリームを有限にしたい場合に使います。
-
-```typescript
-import { interval } from 'rxjs';
-import { take } from 'rxjs/operators';
-
-interval(1000).pipe(
-  take(3)
-).subscribe(console.log);
-```
-
-### 結合系オペレーター
-
-#### merge: 複数ストリームを統合
-
-いずれかのストリームから値が発行されるたびに出力します。
-
-```typescript
-import { merge, interval } from 'rxjs';
-import { map, take } from 'rxjs/operators';
-
-const a$ = interval(1000).pipe(map(x => `A${x}`), take(3));
-const b$ = interval(1500).pipe(map(x => `B${x}`), take(3));
-
-merge(a$, b$).subscribe(console.log);
-```
-
-#### combineLatest: 各ストリームの最新値を組み合わせ
-
-いずれかのストリームが値を発行するたびに、すべてのストリームの最新値を配列で出力します。
-
-```typescript
-import { combineLatest, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
-
-const name$ = of('田中');
-const age$ = of(30).pipe(delay(1000));
-
-combineLatest([name$, age$]).subscribe(([name, age]) => {
-  console.log(`${name}さん、${age}歳`);
+combineLatest([user$, settings$]).pipe(
+  filter(([user, settings]) => user != null && settings != null)
+).subscribe(([user, settings]) => {
+  renderScreen(user, settings);
 });
 ```
 
-#### forkJoin: すべて完了後に最終値を取得
+命令的に書けば、どちらが先に返ってくるかを管理し、両方揃ったかをフラグで追跡する必要があります。ストリームの結合を使えば、その複雑さは抽象化の中に隠れます。
 
-Promise.all()に似ています。
+### 時間を扱う処理もストリームで統一される
+
+debounceTime、throttleTime、delayといったオペレーターは、時間という概念をストリームの中で扱います。
 
 ```typescript
-import { forkJoin, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { fromEvent } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
-forkJoin({
-  a: of(1).pipe(delay(1000)),
-  b: of(2).pipe(delay(500))
-}).subscribe(console.log);
+const search$ = fromEvent(input, 'input').pipe(
+  debounceTime(300),
+  map(e => e.target.value),
+  distinctUntilChanged(),
+  switchMap(query => fetchSearchResults(query))
+);
 ```
+
+「入力が300ms止まったら検索」「前回と同じ値なら無視」「新しい検索が始まったら前の検索をキャンセル」といった時間に関する要件が、すべてストリームの変換として表現されています。setTimeoutやフラグ管理は不要です。
+
+### ストリーム間の関係を宣言する
+
+switchMap、mergeMap、concatMapは、ストリームとストリームの関係を定義します。
+
+switchMapは「新しい値が来たら前の処理を捨てる」という関係です。検索のオートコンプリートで、ユーザーが入力を続けたら前の検索結果は不要になる、という要件に対応します。
+
+mergeMapは「すべて並列に処理する」という関係です。ファイルのアップロードで、複数ファイルを同時に処理したい場合に使います。
+
+concatMapは「順番を保証して処理する」という関係です。順序が重要な操作、たとえばデータベースへの書き込みで使います。
+
+これらの違いは、どのオペレーターを選ぶかという一点に集約されます。処理の関係性を変えたければ、オペレーターを変えるだけです
 
 ## PromiseとObservableの比較
 
