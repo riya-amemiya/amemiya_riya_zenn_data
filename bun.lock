@@ -7,7 +7,7 @@
       "dependencies": {
         "@mitata/counters": "0.0.8",
         "mitata": "1.0.34",
-        "zenn-cli": "0.2.11",
+        "zenn-cli": "0.3.0",
       },
       "devDependencies": {
         "@biomejs/biome": "2.3.11",
@@ -920,7 +920,7 @@
 
     "xtend": ["xtend@4.0.2", "", {}, "sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ=="],
 
-    "zenn-cli": ["zenn-cli@0.2.11", "", { "dependencies": { "open": "^10.2.0" }, "bin": { "zenn": "dist/server/zenn.js" } }, "sha512-xxe2TBVKPMcYL2VmBd2TfJy5UdlVbJiHgttXe2/q+TRuR2548H4iNSc0O7LMWmEyi+hFtsGbWE2yYN8/Ea48NA=="],
+    "zenn-cli": ["zenn-cli@0.3.0", "", { "dependencies": { "open": "^10.2.0" }, "bin": { "zenn": "dist/server/zenn.js" } }, "sha512-L766eu5yeqytglvuTepfEnWMJGTCaQsVHiLFNKs9I6UtFS9jJ6hrjxD5Ys5m8D5sKKC8N4i5R/rb+JfC/PXQVA=="],
 
     "zlibjs": ["zlibjs@0.3.1", "", {}, "sha512-+J9RrgTKOmlxFSDHo0pI1xM6BLVUv+o0ZT9ANtCxGkjIVCCUdx9alUF8Gm+dGLKbkkkidWIHFDZHDMpfITt4+w=="],
 
