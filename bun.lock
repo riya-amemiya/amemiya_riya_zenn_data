@@ -7,11 +7,11 @@
       "dependencies": {
         "@mitata/counters": "0.0.8",
         "mitata": "1.0.34",
-        "zenn-cli": "0.4.1",
+        "zenn-cli": "0.4.5",
       },
       "devDependencies": {
         "@biomejs/biome": "2.3.13",
-        "@types/bun": "1.3.6",
+        "@types/bun": "1.3.8",
         "textlint": "15.5.1",
         "textlint-rule-ja-space-around-code": "2.4.2",
         "textlint-rule-preset-ja-spacing": "2.4.3",
@@ -124,7 +124,7 @@
 
     "@textlint/utils": ["@textlint/utils@15.5.1", "", {}, "sha512-3iA0ogHh6hyTsd+9uVoctAH3sLw/4EUCNrypkMQthnFz32Qe875uR0C5GJdB1LudVqgj8ivvverVaAdTtGGENg=="],
 
-    "@types/bun": ["@types/bun@1.3.6", "", { "dependencies": { "bun-types": "1.3.6" } }, "sha512-uWCv6FO/8LcpREhenN1d1b6fcspAB+cefwD7uti8C8VffIv0Um08TKMn98FynpTiU38+y2dUO55T11NgDt8VAA=="],
+    "@types/bun": ["@types/bun@1.3.8", "", { "dependencies": { "bun-types": "1.3.8" } }, "sha512-3LvWJ2q5GerAXYxO2mffLTqOzEu5qnhEAlh48Vnu8WQfnmSwbgagjGZV6BoHKJztENYEDn6QmVd949W4uESRJA=="],
 
     "@types/mdast": ["@types/mdast@3.0.15", "", { "dependencies": { "@types/unist": "^2" } }, "sha512-LnwD+mUEfxWMa1QpDraczIn6k0Ee3SMicuYSSzS6ZYl2gKS09EClnJYGd8Du6rfc5r/GZEk5o1mRb8TaTj03sQ=="],
 
@@ -174,7 +174,7 @@
 
     "brace-expansion": ["brace-expansion@2.0.1", "", { "dependencies": { "balanced-match": "^1.0.0" } }, "sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA=="],
 
-    "bun-types": ["bun-types@1.3.6", "", { "dependencies": { "@types/node": "*" } }, "sha512-OlFwHcnNV99r//9v5IIOgQ9Uk37gZqrNMCcqEaExdkVq3Avwqok1bJFmvGMCkCE0FqzdY8VMOZpfpR3lwI+CsQ=="],
+    "bun-types": ["bun-types@1.3.8", "", { "dependencies": { "@types/node": "*" } }, "sha512-fL99nxdOWvV4LqjmC+8Q9kW3M4QTtTR1eePs94v5ctGqU8OeceWrSUaRw3JYb7tU3FkMIAjkueehrHPPPGKi5Q=="],
 
     "bundle-name": ["bundle-name@4.1.0", "", { "dependencies": { "run-applescript": "^7.0.0" } }, "sha512-tjwM5exMg6BGRI+kNmTntNsvdZS1X8BFYS6tnJ2hdH0kVxM6/eVZ2xy+FqStSWvYmtfFMDLIxurorHwDKfDz5Q=="],
 
@@ -928,7 +928,7 @@
 
     "xtend": ["xtend@4.0.2", "", {}, "sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ=="],
 
-    "zenn-cli": ["zenn-cli@0.4.1", "", { "dependencies": { "open": "^10.2.0", "package-manager-detector": "^1.6.0" }, "bin": { "zenn": "dist/server/zenn.js" } }, "sha512-zK6/VxIcue72msrIvJXGbWOqLvQ2gbzpIFli7gmdLj4PxU2ZL9l8Ye6PUPsvjMI/ZHAFgiWdxOVEEcjphBdbZg=="],
+    "zenn-cli": ["zenn-cli@0.4.5", "", { "dependencies": { "open": "^10.2.0", "package-manager-detector": "^1.6.0" }, "bin": { "zenn": "dist/server/zenn.js" } }, "sha512-lrG5Bb8j8jhVKRLE1T6Fe/wYV+jBDaRZFHzDatS/tcxcoV1oNaK812PeXYr2rtvH77trZaIag6fYltGXAIN0oA=="],
 
     "zlibjs": ["zlibjs@0.3.1", "", {}, "sha512-+J9RrgTKOmlxFSDHo0pI1xM6BLVUv+o0ZT9ANtCxGkjIVCCUdx9alUF8Gm+dGLKbkkkidWIHFDZHDMpfITt4+w=="],
 
