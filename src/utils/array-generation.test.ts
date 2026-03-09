@@ -12,35 +12,34 @@ describe("Array Generation Functions", () => {
   const testSizes = [0, 1, 10, 100, 1024];
 
   describe("All functions generate identical arrays", () => {
-    test.each(testSizes)(
-      "all functions produce identical sequential arrays for size %d",
-      (size) => {
-        const reference = createArrayWithFromMapper(size);
+    test.each(
+      testSizes,
+    )("all functions produce identical sequential arrays for size %d", (size) => {
+      const reference = createArrayWithFromMapper(size);
 
-        const constructorArr = createArrayWithConstructor(size);
-        const fromMapper = createArrayWithFromMapper(size);
-        const spread = createArrayWithSpread(size);
-        const fill = createArrayWithFill(size);
-        const forPush = createArrayWithForPush(size);
-        const ofArr = createArrayWithOf(size);
+      const constructorArr = createArrayWithConstructor(size);
+      const fromMapper = createArrayWithFromMapper(size);
+      const spread = createArrayWithSpread(size);
+      const fill = createArrayWithFill(size);
+      const forPush = createArrayWithForPush(size);
+      const ofArr = createArrayWithOf(size);
 
-        expect(constructorArr).toEqual(reference);
-        expect(fromMapper).toEqual(reference);
-        expect(spread).toEqual(reference);
-        expect(fill).toEqual(reference);
-        expect(forPush).toEqual(reference);
-        expect(ofArr).toEqual(reference);
+      expect(constructorArr).toEqual(reference);
+      expect(fromMapper).toEqual(reference);
+      expect(spread).toEqual(reference);
+      expect(fill).toEqual(reference);
+      expect(forPush).toEqual(reference);
+      expect(ofArr).toEqual(reference);
 
-        for (let i = 0; i < size; i++) {
-          expect(constructorArr[i]).toBe(i);
-          expect(fromMapper[i]).toBe(i);
-          expect(spread[i]).toBe(i);
-          expect(fill[i]).toBe(i);
-          expect(forPush[i]).toBe(i);
-          expect(ofArr[i]).toBe(i);
-        }
-      },
-    );
+      for (let i = 0; i < size; i++) {
+        expect(constructorArr[i]).toBe(i);
+        expect(fromMapper[i]).toBe(i);
+        expect(spread[i]).toBe(i);
+        expect(fill[i]).toBe(i);
+        expect(forPush[i]).toBe(i);
+        expect(ofArr[i]).toBe(i);
+      }
+    });
   });
 
   describe("Length validation", () => {
