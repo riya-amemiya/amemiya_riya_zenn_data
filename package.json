@@ -7,8 +7,6 @@
   "scripts": {
     "test": "bun test",
     "build": "tsc",
-    "build:d8": "tsc && find dist -name '*.js' -type f -exec sh -c 'sed -e \"s/from \\\"mitata\\\"/from \\\"..\\/node_modules\\/mitata\\/src\\/main.mjs\\\"/g\" -e \"s/\\\\.js\\\"/\\\\.mjs\\\"/g\" \"$1\" > \"${1%.js}.mjs\"' _ {} \\;",
-    "build:jsc": "bun run build:d8",
     "lint": "biome check .",
     "format": "biome check --write ."
   },
