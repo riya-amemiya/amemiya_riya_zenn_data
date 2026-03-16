@@ -13,6 +13,7 @@
             "spellcheck-tech-word": true
         },
         "preset-ja-technical-writing": {
+            "ja-unnatural-alphabet": false,
             "ja-no-mixed-period": false,
             "ja-no-successive-word": false,
             "ja-no-weak-phrase": false,
