@@ -16,10 +16,10 @@
   "dependencies": {
     "@mitata/counters": "0.0.8",
     "mitata": "1.0.34",
-    "zenn-cli": "0.4.6"
+    "zenn-cli": "0.4.7"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.8",
+    "@biomejs/biome": "2.4.10",
     "@types/bun": "1.3.11",
     "textlint": "15.5.2",
     "textlint-rule-ja-space-around-code": "2.4.2",
