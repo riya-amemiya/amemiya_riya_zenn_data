@@ -1,7 +1,7 @@
 title: "V8大全"
-summary: "JavaScript エンジン V8 の内部構造を 50 章で網羅した技術書です。Tagged Pointer の最下位ビットエンコーディングから、Hidden Class (Map) の Transition Tree、ElementsKind 遷移ラティス、Orinoco GC の Mark-Compact、Pointer Compression Cage、V8 Sandbox、Ignition / Sparkplug / Maglev / TurboFan の四段ティアアップ、Inline Cache の状態遷移、Torque DSL の構文と CodeStubAssembler への変換、Array.prototype.flat の TryFastFlat 二パス実装まで、ソースコード行番号と実コードを引用して詳説します。"
+summary: "JavaScript エンジン V8 の内部構造を 55 章で網羅した技術書です。Tagged Pointer の最下位ビットエンコーディングから、Hidden Class (Map) の Transition Tree、ElementsKind 遷移ラティス、Orinoco GC の Mark-Compact、Pointer Compression Cage、V8 Sandbox、Ignition / Sparkplug / Maglev / TurboFan の四段ティアアップ、Inline Cache の状態遷移、Torque DSL の構文と CodeStubAssembler への変換、Array.prototype.flat の TryFastFlat 二パス実装まで、ソースコード行番号と実コードを引用して詳説します。"
 topics: ["v8", "javascript", "internals", "memory", "gc"]
-published: false
+published: true
 price: 0
 chapters:
   - "ch01"
@@ -18,10 +18,14 @@ chapters:
   - "ch12"
   - "ch13"
   - "ch14"
+  - "ch52"
   - "ch15"
+  - "ch53"
   - "ch16"
+  - "ch54"
   - "ch17"
   - "ch18"
+  - "ch55"
   - "ch19"
   - "ch20"
   - "ch21"
@@ -54,3 +58,4 @@ chapters:
   - "ch48"
   - "ch49"
   - "ch50"
+  - "ch51"
