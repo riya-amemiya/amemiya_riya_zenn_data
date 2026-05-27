@@ -1,30 +1,24 @@
 ---
-title: "テストカバレッジ"
+title: "実装の進化"
 free: true
 ---
 
-V8 のローカルテストは大きく三系統に分かれます。harmony 配下の元来の機能テスト、regression テスト、そして WebAssembly の resizable buffer 連携テストです。test262 (`test/test262/data/test/built-ins/Array/prototype/flat/`) は本リポジトリには未同期ですが、tc39/test262 の external リポジトリ経由で CI で実行されていて、V8 は仕様準拠で完全合格しています。
+`Array.prototype.flat` の実装は、設計上意味のある三つの転換点を経て現在の形に到達しています。
 
-## harmony テスト
+## CSA から Torque への移行 (2023)
 
-`test/mjsunit/harmony/array-flat.js` (Copyright 2018) は仕様の基本契約をすべて網羅しています。`Array.prototype.flat.length === 0`、`name === 'flat'`、depth 引数の各種型 (Infinity、-Infinity、0、true、false、null、undefined、''、'foo'、/./、[]、{}、`new Proxy({}, {})`、関数、String) の処理、Symbol() と `Object.create(null)` での TypeError、`length: 'wat'` を持つ array-like、`get length()` の評価回数、property descriptor (`writable: true, enumerable: false, configurable: true`) の確認、といった具合です。
+最初の大きな変化は、`src/builtins/builtins-array-gen.cc` の `ArrayFlattenAssembler` という CSA 直書きの C++ 実装から、`src/builtins/array-flat.tq` という Torque 実装への移行です。同時に `FastJSArrayWitness` を使った fast path が導入され、これだけでマイクロベンチマーク上で 4 倍の改善が報告されました。
 
-`test/mjsunit/harmony/array-flatMap.js` は flatMap の `length === 1` を確認したうえで、mapper 関数のスプレッド (`[1,2,3,4].flatMap(e => [e, e**2])`)、各種値での自己同型、非関数の TypeError、null / undefined receiver の TypeError、`length: 'wat'` の array-like、thisArg バインディング、length getter の副作用順序、property descriptor を確かめます。
+ただし最初の Torque 実装には、反復中に source 配列の長さが変わるケースで境界外読み出しを起こすバグがありました。getter で配列を縮めたり、mapper の副作用で伸ばしたり、`depth` 引数の評価中に長さが変わったり、というシナリオです。fix は段階的に行われ、最終形では `fastSource.length` を直接ループ条件にせず、`fastOW.Get().length` の都度比較に変わりました。`Recheck` がレシーバの map と protector の状態しか見ない設計と組み合わさって、現在の bailout 構造が固まっています。
 
-`test/mjsunit/harmony/array-flat-species.js` と `array-flatMap-species.js` は `class MyArray extends Array { static get [Symbol.species]() { return Array; } }` のケースと `return this;` のケースとで、結果が MyArray インスタンスになるかを切り分けて検査します。
+## 二パス高速路の導入 (2026)
 
-`test/mjsunit/array-flat-elements-kind.js` (Copyright 2025、3eed742 で追加) は ElementsKind の正確な決定をネイティブ関数 `%HasSmiElements` / `%HasDoubleElements` / `%HasObjectElements` で確かめるテストです。`[1].flat()` は SMI、`[1.1].flat()` は DOUBLE、`[[1],[1.1]].flat()` は DOUBLE (SMI が double に収まる)、`[[1],[[1.1]]].flat()` は OBJECT (内側配列がオブジェクト扱い)、`[["hello"]].flat()` は OBJECT、といった ElementsKind 推論を網羅します。
+次の大きな変化は、`TryFastFlat` と `CalculateFlattenedLengthFast` による二パス高速路の追加です。Torque 化された仕様準拠経路はそのままに、その手前に「最終長と target ElementsKind を一回目で確定し、二回目で一度だけ確保して値を流し込む」という別経路が挟まる形になりました。
 
-## regression テスト
+設計上の前提は五つあります。スタックベースの反復走査で任意深さに対応すること、`NoElementsProtector` と `ArraySpeciesProtector` が有効であること、proxy / accessor / 独自要素を含まないこと、ネストした配列も `FastJSArray` であること、外れた場合は既存の slow path に滑らかにフォールバックすること、という条件のもとで成立します。20M 要素規模のベンチマークでは SMI 配列で約 4.6 倍、DOUBLE 配列で約 4.7 倍、文字列を含む OBJECT 配列で約 2.4 倍の改善が出ています。
 
-regression テストは三つあります。
+## HOLEY_DOUBLE + undefined クラッシュ修正
 
-`test/mjsunit/regress/regress-8708.js` (Copyright 2019、`--stack-size=100` フラグ付き) は循環ネスト `array.splice(1, 0, array); array.flat(Infinity)` で `RangeError` (stack overflow) が投げられることを確かめます。現在は `kMaxFlatFastStackEntries = 3072` でも検知され、fallback 後の再帰呼び出し中の `PerformStackCheck()` で確実に補足される構造です。
+この高速路にはひとつ落とし穴がありました。`V8_ENABLE_UNDEFINED_DOUBLE` 機能が有効なビルドでは、`HOLEY_DOUBLE_ELEMENTS` の `FixedDoubleArray` に `undefined` ビットパターンを直接格納できます。当初の `CalculateFlattenedLengthFast` は holey も含めて早期 return を行っていたため、`undefined` を含む holey double が PACKED_DOUBLE 第二パスの `UnsafeCast<Number>` に流れ込み、ClusterFuzz が三件のクラッシュを発見しました。
 
-`test/mjsunit/regress/regress-crbug-1507416.js` (Copyright 2023) は、最初の Torque 実装で見つかった三つの観測可能バグを一度に押さえる test です。TestGrow ケースは `[0,1,2,3].flatMap(e => { array[4] = 42; return e; })` で、mapper の副作用で配列が伸びても最初の四要素しか平坦化されないこと (仕様の `for sourceIndex < sourceLen` 不変条件) を確認します。TestGrow2 ケースは depth 引数評価中に配列が伸びる (`valueOf` で push) パターン、TestShrink は `array.length = 3` で配列を縮めるケースです。これらは初期の Torque 実装が `fastSource.length` をループ条件に直接使ったために起きた境界外読み出しで、d429a14 と 05122fe の段階的修正で `fastOW.Get().length` の都度比較に変わりました。
-
-`test/mjsunit/regress/regress-crbug-488366773.js` (Copyright 2026) は HOLEY_DOUBLE + undefined クラッシュ修正の regression test です。`Object.defineProperty(a, '1', { get: function() {} })` で穴に getter を付け、`a.slice()` で HOLEY_DOUBLE_ELEMENTS かつ undefined を持つ配列を作り、`.flat()` で crash しないことを確かめます。`V8_ENABLE_UNDEFINED_DOUBLE` のもとで FixedDoubleArray に undefined を sentinel として格納できる新機能が、`CalculateFlattenedLengthFast` の早期 return を holey も含めて行っていたために PACKED_DOUBLE 第二パスの `UnsafeCast<Number>(undefined)` で crash していた、その問題を fix した代表テストです。
-
-## wasm 連携テスト
-
-`test/mjsunit/wasm/memory-resizable-buffer-array-flat-grows-detaches.js` ほか五ファイル (`memory-resizable-buffer-array-flat-flatmap-from.js`、`memory-resizable-buffer-array-flatmap-grows-detaches.js`、`shared-memory-resizable-buffer-array-flat-flatmap-from.js`、`shared-memory-resizable-buffer-array-flatmap-grows.js`、`shared-memory-resizable-buffer-array-flat-grows.js`) は、WebAssembly 共有または通常の ResizableArrayBuffer を裏に持つ TypedArray を receiver にして flat / flatMap を呼んだ際の振る舞いを確かめます。depth や mapper の `valueOf` 内で `rab.resize()` や `%ArrayBufferDetachForceWasm(rab)` が発火しても安全に動くこと、というのが主な検査対象です。
+修正は短く、早期 return を「真に packed な要素種別」(PACKED_SMI と PACKED_DOUBLE) だけに限定するというものです。これによってホット経路の単純さを保ちつつ、新しい undefined-in-double セマンティクスとの衝突を回避しました。
