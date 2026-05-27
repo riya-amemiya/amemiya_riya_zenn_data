@@ -11,13 +11,13 @@ JS から呼び出されたあと、fast path → slow path のフォールバ�
 
 ```mermaid
 flowchart TD
-    JS["JS: arr.flat(depth)"] --> Entry["ArrayPrototypeFlat builtin"]
-    Entry -->|ToObject, ToLength, depth 整数化| TryFast["TryFastFlat"]
+    JS["arr.flat(depth)"] --> Entry["ArrayPrototypeFlat builtin"]
+    Entry -->|"ToObject, ToLength, depth 整数化"| TryFast["TryFastFlat"]
     TryFast -->|成功| Result["結果 JSArray を返す"]
     TryFast -->|SlowFastPath| Spec["ArraySpeciesCreate(O, 0)"]
     Spec --> Slow["FlattenIntoArrayWithoutMapFn"]
     Slow --> Fast2["FlattenIntoArrayFast"]
-    Fast2 -->|Bailout(target, source)| Slow2["FlattenIntoArraySlow"]
+    Fast2 -->|"Bailout(target, source)"| Slow2["FlattenIntoArraySlow"]
     Slow2 -->|入れ子配列ごとに再帰| Slow
     Fast2 --> Result
     Slow2 --> Result

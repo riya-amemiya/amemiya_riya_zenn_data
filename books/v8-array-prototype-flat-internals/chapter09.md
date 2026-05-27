@@ -32,7 +32,7 @@ fast path で `goto Bailout` が発火する箇所は、性質ごとに七種類
 
 ```mermaid
 flowchart LR
-    FF[FlattenIntoArrayFast] -->|Bailout(target, source)| FS[FlattenIntoArraySlow]
+    FF[FlattenIntoArrayFast] -->|"Bailout(target, source)"| FS[FlattenIntoArraySlow]
     FS -->|残りの進捗から再開| End[戻り値]
 ```
 

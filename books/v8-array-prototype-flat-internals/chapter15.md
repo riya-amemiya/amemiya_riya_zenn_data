@@ -8,11 +8,9 @@ free: true
 ## 三段階のタイムライン
 
 ```mermaid
-timeline
-    title Array.prototype.flat の進化
-    2018 : V8 v6.9 で出荷<br/>CSA 直書きで実装
-    2023 : Torque へ移行<br/>FastJSArrayWitness 経路で 4 倍化
-    2026 : 二パス TryFastFlat 導入<br/>20M 要素で最大 4.7 倍化
+flowchart LR
+    Y2018["2018<br/>V8 v6.9 で出荷<br/>CSA 直書き"] --> Y2023["2023<br/>Torque 移行<br/>FastJSArrayWitness 経路<br/>(マイクロベンチ 4 倍)"]
+    Y2023 --> Y2026["2026<br/>二パス TryFastFlat 導入<br/>(20M 要素で最大 4.7 倍)"]
 ```
 
 | 時期 | 主要変更 | 効果 |
