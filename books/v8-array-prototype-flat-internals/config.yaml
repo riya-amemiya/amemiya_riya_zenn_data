@@ -1,7 +1,7 @@
 title: "V8 Array.prototype.flat 完全解説"
 summary: "V8におけるArray.prototype.flatの低レイヤ実装解説。エントリポイントのTorqueソースからElementsKindとメモリレイアウト、Witnessパターン、Bailout設計、ECMAScript仕様との対応、コミット史までを通しでカバーします。参照行番号はV8のローカルツリー(HEAD 0ade545a、shallow boundary 33ca8a4017b75d3c7e81f0f88760fe1871b016bf、2026-05-21)に基づきます。"
 topics: ["javascript", "v8", "chromium", "torque", "browser"]
-published: true
+published: false
 price: 0
 chapters:
   - chapter01
