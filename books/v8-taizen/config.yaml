@@ -1,0 +1,11 @@
+title: "V8大全"
+summary: "JavaScript エンジン V8 の内部構造を網羅した技術書です。Tagged Pointer の最下位ビットエンコーディングから、Hidden Class (Map) の Transition Tree、ElementsKind 遷移ラティス、Orinoco GC の Mark-Compact、Pointer Compression Cage、V8 Sandbox、Ignition / Sparkplug / Maglev / TurboFan の四段ティアアップ、Inline Cache の状態遷移、Torque DSL の構文と CodeStubAssembler への変換、Array.prototype.flat の TryFastFlat 二パス実装まで、ソースコード行番号と実コードを引用して詳説します。"
+topics: ["v8", "javascript", "internals", "memory", "gc"]
+published: true
+price: 0
+chapters:
+  - "1"
+  - "2"
+  - "3"
+  - "4"
+  - "5"
