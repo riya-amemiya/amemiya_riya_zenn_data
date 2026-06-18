@@ -64,16 +64,16 @@ https://zenn.dev/dinii/articles/675d47a6c21c83
 
 前回のパッチで、`flat` のfast pathは「2パス方式」になりました。
 
-- 第1パス … 結果配列の正確な長さと、最適な型（ElementsKind）を先に計算する
-- 第2パス … その長さで配列を一度だけ確保し、要素を書き込む
+- 第1パス: 結果配列の正確な長さと、最適な型（ElementsKind）を先に計算する
+- 第2パス: その長さで配列を一度だけ確保し、要素を書き込む
 
 これにより、従来の「空配列に1個ずつ足して、足りなくなるたびに作り直す」という無駄をなくしました。
 
 今回の話で重要なのは、ElementsKindの次の性質です。
 
-- `PACKED_SMI_ELEMENTS` … 全要素が整数（Smi）で、隙間なし
-- `PACKED_DOUBLE_ELEMENTS` … 全要素が数値（小数を含む）で、隙間なし
-- `PACKED_ELEMENTS` … 文字列やオブジェクトを含みうる、隙間なし
+- `PACKED_SMI_ELEMENTS`: 全要素が整数（Smi）で、隙間なし
+- `PACKED_DOUBLE_ELEMENTS`: 全要素が数値（小数を含む）で、隙間なし
+- `PACKED_ELEMENTS`: 文字列やオブジェクトを含みうる、隙間なし
 
 数値だけの `PACKED_SMI_ELEMENTS` と `PACKED_DOUBLE_ELEMENTS` には、サブ配列もProxyもholeも入り得ません。
 この「中身が数値だと型レベルで保証される」という事実が、今回のバルクコピーを支えています。
