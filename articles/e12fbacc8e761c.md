@@ -66,9 +66,9 @@ https://zenn.dev/dinii/articles/675d47a6c21c83
 
 今回の主役は、次のElementsKindです。
 
-- `PACKED_SMI_ELEMENTS`：全要素が整数（Smi）で、隙間なし
-- `PACKED_DOUBLE_ELEMENTS`：全要素が数値（小数を含む）で、隙間なし
-- `PACKED_ELEMENTS`：文字列やオブジェクトを含みうる、隙間なし
+- `PACKED_SMI_ELEMENTS`：全要素が整数（Smi）で、Holeなし
+- `PACKED_DOUBLE_ELEMENTS`：全要素が数値（小数を含む）で、Holeなし
+- `PACKED_ELEMENTS`：文字列やオブジェクトを含みうる、Holeなし
 
 数値だけの `PACKED_SMI_ELEMENTS` と `PACKED_DOUBLE_ELEMENTS` には、サブ配列もProxyもholeも入り得ません。
 中身が数値だと型レベルで保証される、というこの一点が、今回の高速化の土台になります。
