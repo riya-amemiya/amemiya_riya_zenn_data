@@ -24,7 +24,7 @@ https://zenn.dev/dinii/articles/675d47a6c21c83
 
 パッチはこちらです。
 
-<!-- TODO: マージ後にGerritのCL URLを記載する -->
+https://chromium-review.googlesource.com/c/v8/v8/+/7632521
 
 レビューは前回に引き続きOlivier Flückigerさんが担当してくれました。
 
