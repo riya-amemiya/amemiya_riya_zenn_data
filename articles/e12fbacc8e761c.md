@@ -3,7 +3,8 @@ title: "Chromium(V8)のArray.prototype.flatをバルクコピーでさらに約5
 emoji: "🪄"
 type: "tech"
 topics: ["javascript", "v8", "performance", "chromium"]
-published: false
+published: true
+published_at: 2026-06-25 09:00
 publication_name: "dinii"
 ---
 
