@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.15",
-    "@types/bun": "1.4.2",
+    "@types/bun": "1.4.3",
     "textlint": "15.8.0",
     "textlint-rule-ja-space-around-code": "3.0.3",
     "textlint-rule-preset-ja-spacing": "3.0.3",
