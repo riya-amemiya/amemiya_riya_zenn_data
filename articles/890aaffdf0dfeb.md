@@ -17,7 +17,6 @@ published: false
 
 https://kichijojipm.connpass.com/event/409593/
 
-この記事はそのLTの内容に説明を足して書き直したものです。
 私自身もマネジメントされる側の一人です。
 
 その立場から書くと、1on1で部下がやる仕事は進捗の報告ではなく、文句や違和感、本音を上司に伝えることです。
@@ -260,7 +259,7 @@ https://kichijojipm.connpass.com/event/409593/
 ## 上司が動ける形で伝える
 
 文句を言って評価が下がるのは、愚痴のまま言ったときです。
-LTでは上司に動いてもらうための伝え方を3つ紹介しました。
+上司に動いてもらうための伝え方は、次の3つです。
 
 ### 話したいことを先に書く
 
@@ -344,11 +343,107 @@ LTでは上司に動いてもらうための伝え方を3つ紹介しました�
 影響を開発速度で説明しているので、チームの問題として伝わります。
 どうしたいのかまで言ってあれば、上司の仕事は許可を出すか、足りないものを調整するかのどちらかです。
 
-ほかの不満も同じ形にできます。
-「レビューが遅くてつらい」なら、「レビュー待ちでPRが止まり、リリースが遅れているので、レビュー当番を決めたいです」と言えます。
+ほかの不満も同じ形に言い換えられます。
 
-上司の仕事は部下のブロッカーを取り除くことです。
-課題の形で渡された不満は、上司が取り除くべきブロッカーになり、上司が動く口実にもなります。
+```html-embed
+<div class="fig">
+  <input type="radio" name="tab" id="t1" checked>
+  <input type="radio" name="tab" id="t2">
+  <input type="radio" name="tab" id="t3">
+  <div class="tabs">
+    <label for="t1">レビュー待ち</label>
+    <label for="t2">会議の多さ</label>
+    <label for="t3">オンコール</label>
+  </div>
+  <div class="panel p1">
+    <div class="name">ただの文句</div>
+    <p class="quote">レビュー遅すぎて<wbr>仕事にならないです</p>
+    <div class="name">上司を動かす言い方</div>
+    <dl class="parts">
+      <dt>原因</dt>
+      <dd>レビューの担当が<wbr>決まっていないせいで</dd>
+      <dt>影響</dt>
+      <dd>PRが何日も止まって<wbr>リリースが<wbr>遅れているので</dd>
+      <dt>やりたいこと</dt>
+      <dd>レビュー当番を<wbr>決めたいです</dd>
+    </dl>
+  </div>
+  <div class="panel p2">
+    <div class="name">ただの文句</div>
+    <p class="quote">会議多すぎて<wbr>手を動かす時間が<wbr>ないです</p>
+    <div class="name">上司を動かす言い方</div>
+    <dl class="parts">
+      <dt>原因</dt>
+      <dd>出なくてもいい<wbr>定例が多いせいで</dd>
+      <dt>影響</dt>
+      <dd>まとまった作業時間が<wbr>取れず<wbr>実装が進まないので</dd>
+      <dt>やりたいこと</dt>
+      <dd>出る会議を<wbr>一緒に見直したいです</dd>
+    </dl>
+  </div>
+  <div class="panel p3">
+    <div class="name">ただの文句</div>
+    <p class="quote">オンコール<wbr>しんどすぎます</p>
+    <div class="name">上司を動かす言い方</div>
+    <dl class="parts">
+      <dt>原因</dt>
+      <dd>対応のいらない<wbr>アラートが多いせいで</dd>
+      <dt>影響</dt>
+      <dd>夜中に起こされて<wbr>次の日の作業に<wbr>響いているので</dd>
+      <dt>やりたいこと</dt>
+      <dd>アラートの条件を<wbr>見直す時間がほしいです</dd>
+    </dl>
+  </div>
+</div>
+<style>
+  .fig {
+    --bg: #ffffff;
+    --fg: #243762;
+    --line: #7f8fb0;
+    --accent: #1d5fd1;
+    --accent-bg: #edf4ff;
+    position: relative;
+    padding: 20px;
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  [data-theme="dark"] .fig {
+    --bg: #101827;
+    --fg: #e6edf9;
+    --line: #5f7196;
+    --accent: #8ab8ff;
+    --accent-bg: #1a2c4c;
+  }
+  .fig, .fig * { box-sizing: border-box; }
+  .fig input { position: absolute; opacity: 0; pointer-events: none; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .tabs label { padding: 6px 14px; border: 2px solid var(--line); border-radius: 999px; font-size: 14px; cursor: pointer; }
+  #t1:checked ~ .tabs label[for="t1"],
+  #t2:checked ~ .tabs label[for="t2"],
+  #t3:checked ~ .tabs label[for="t3"] { border-color: var(--accent); background: var(--accent); color: var(--bg); }
+  #t1:focus-visible ~ .tabs label[for="t1"],
+  #t2:focus-visible ~ .tabs label[for="t2"],
+  #t3:focus-visible ~ .tabs label[for="t3"] { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .panel { display: none; grid-template-columns: max-content 1fr; align-items: start; gap: 20px 24px; }
+  #t1:checked ~ .p1, #t2:checked ~ .p2, #t3:checked ~ .p3 { display: grid; }
+  .name { padding-top: 10px; color: var(--accent); }
+  .quote, .parts dd { justify-self: start; margin: 0; padding: 8px 14px; border: 2px solid var(--line); border-radius: 10px; word-break: keep-all; overflow-wrap: anywhere; }
+  .parts { display: grid; grid-template-columns: max-content 1fr; align-items: center; gap: 8px 12px; margin: 0; }
+  .parts dt { font-size: 13px; color: var(--accent); }
+  .parts dd { border-color: var(--accent); background: var(--accent-bg); }
+  @media (max-width: 640px) {
+    .fig { padding: 14px; }
+    .tabs { gap: 6px; margin-bottom: 14px; }
+    .tabs label { padding: 4px 10px; font-size: 13px; }
+    .panel { grid-template-columns: 1fr; gap: 6px; }
+    .name { padding-top: 0; }
+    .quote { margin-bottom: 8px; }
+  }
+</style>
+```
 
 ### やりたいことを会社の成果に繋げる
 
@@ -407,7 +502,7 @@ LTでは上司に動いてもらうための伝え方を3つ紹介しました�
 </style>
 ```
 
-LTでは次の聞き方を紹介しました。
+相談するときは、次のように聞けます。
 
 > 私はXに興味がある
 > これをチームや会社の成果に繋げるなら
@@ -418,6 +513,185 @@ Xには自分のやりたいことを入れてください。
 そのため、上司は可否を決める側から一緒に方法を考える側に回ります。
 
 キャリアパスの調整は上司の大事な仕事なので、遠慮なく巻き込んでください。
+
+## 受け取った上司ができること
+
+課題の形で渡した不満は、上司にとっても扱いやすい相談です。
+上司の仕事は部下のブロッカーを取り除くことです。
+原因と影響とやりたいことがそろった不満は、そのまま上司が取り除くべきブロッカーになります。
+
+愚痴のままの不満を受け取った上司は、何が原因で何に困っているのかを聞き出すところから始めることになります。
+課題の形で受け取れば、上司はその場で次の手を選べます。
+どの手を選ぶかは、その課題を上司の権限で片づけられるかどうか次第です。
+
+```html-embed
+<div class="fig">
+  <div class="start">課題の形で渡された不満</div>
+  <div class="down" aria-hidden="true">↓</div>
+  <ul class="cases">
+    <li class="case">
+      <div class="when">上司が<wbr>決められる</div>
+      <div class="act">その場で<wbr>許可する</div>
+      <div class="ex">例 出なくていい<wbr>定例を外す</div>
+    </li>
+    <li class="case">
+      <div class="when">今の仕事と<wbr>取り合いになる</div>
+      <div class="act">優先順位を<wbr>組み替える</div>
+      <div class="ex">例 アラートの見直しを<wbr>先にやる</div>
+    </li>
+    <li class="case">
+      <div class="when">上司だけでは<wbr>決められない</div>
+      <div class="act">上の人や<wbr>他チームに<wbr>持ち上げる</div>
+      <div class="ex">例 レビューの体制を<wbr>部署で決める</div>
+    </li>
+  </ul>
+</div>
+<style>
+  .fig {
+    --bg: #ffffff;
+    --fg: #243762;
+    --line: #7f8fb0;
+    --accent: #1d5fd1;
+    --accent-bg: #edf4ff;
+    padding: 20px;
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  [data-theme="dark"] .fig {
+    --bg: #101827;
+    --fg: #e6edf9;
+    --line: #5f7196;
+    --accent: #8ab8ff;
+    --accent-bg: #1a2c4c;
+  }
+  .fig, .fig * { box-sizing: border-box; }
+  .start { padding: 10px 16px; border: 2px solid var(--fg); border-radius: 10px; text-align: center; }
+  .down { padding: 2px 0; color: var(--accent); text-align: center; }
+  .cases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0; padding: 0; list-style: none; }
+  .case { padding: 12px 14px; border: 2px solid var(--line); border-radius: 10px; word-break: keep-all; overflow-wrap: anywhere; }
+  .when { font-size: 13px; color: var(--accent); }
+  .act { margin-top: 2px; }
+  .ex { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); font-size: 13px; font-weight: 400; }
+  @media (max-width: 640px) {
+    .cases { grid-template-columns: 1fr; gap: 8px; }
+    .case { padding: 8px 12px; }
+    .ex { margin-top: 4px; padding-top: 4px; }
+  }
+</style>
+```
+
+上司だけでは決められない課題でも、影響がチームの成果で説明してあれば、上司はその説明をそのまま上の人や他チームに持っていけます。
+課題の形で渡すことは、上司に動く口実を渡すことでもあります。
+
+## 言ったあとの1on1
+
+課題を渡したら、次の1on1の最初にその課題がどうなったかを確かめてください。
+上司はほかのメンバーやチームの仕事も抱えているので、一度聞いた課題でも後回しになることがあります。
+渡したまま確かめなければ、言わなかったときと同じ結果で終わることもあります。
+
+```html-embed
+<div class="fig">
+  <div class="cycle" role="img" aria-label="課題を渡す、上司が動く、次の1on1で確かめる、結果を伝える、を1on1のたびに繰り返す">
+    <div class="node n1">課題を渡す</div>
+    <div class="arrow a1">→</div>
+    <div class="node n2">上司が動く</div>
+    <div class="arrow a2">↓</div>
+    <div class="node n3">次の1on1で<wbr>確かめる</div>
+    <div class="arrow a3">←</div>
+    <div class="node n4">結果を伝える</div>
+    <div class="arrow a4">↑</div>
+    <div class="center">1on1の<wbr>たびに</div>
+  </div>
+</div>
+<style>
+  .fig {
+    --bg: #ffffff;
+    --fg: #243762;
+    --line: #7f8fb0;
+    --accent: #1d5fd1;
+    --accent-bg: #edf4ff;
+    padding: 20px;
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  [data-theme="dark"] .fig {
+    --bg: #101827;
+    --fg: #e6edf9;
+    --line: #5f7196;
+    --accent: #8ab8ff;
+    --accent-bg: #1a2c4c;
+  }
+  .fig, .fig * { box-sizing: border-box; }
+  .cycle { display: grid; grid-template-columns: 1fr 5em 1fr; align-items: center; gap: 8px 12px; max-width: 480px; }
+  .node { padding: 10px 12px; border: 2px solid var(--line); border-radius: 10px; text-align: center; word-break: keep-all; overflow-wrap: anywhere; }
+  .n3 { border-color: var(--accent); background: var(--accent-bg); color: var(--accent); }
+  .arrow { color: var(--accent); text-align: center; }
+  .center { font-size: 13px; text-align: center; word-break: keep-all; overflow-wrap: anywhere; }
+  .n1 { grid-area: 1 / 1; }
+  .a1 { grid-area: 1 / 2; }
+  .n2 { grid-area: 1 / 3; }
+  .a2 { grid-area: 2 / 3; }
+  .n3 { grid-area: 3 / 3; }
+  .a3 { grid-area: 3 / 2; }
+  .n4 { grid-area: 3 / 1; }
+  .a4 { grid-area: 2 / 1; }
+  .center { grid-area: 2 / 2; }
+  @media (max-width: 640px) {
+    .fig { padding: 14px; font-size: 14px; }
+    .cycle { grid-template-columns: 1fr 4em 1fr; gap: 6px; }
+    .node { padding: 8px; }
+    .center { font-size: 12px; }
+  }
+</style>
+```
+
+確かめたときの答えによって、次に話すことが変わります。
+
+上司が動いてくれていたなら、何が変わったかを伝えてください。
+対応した結果が返ってくると、上司は自分の動きが役に立ったと分かり、次の課題も受け取りやすくなります。
+
+自分でやると決めたことがあるなら、そのあとどうなったかを話してください。
+これはタスクの進捗報告とは別で、前回の1on1で決めたことの続きです。
+
+課題が止まっているなら、理由を上司に聞いてください。
+理由ごとの次の手は次の節で書きます。
+
+## 言いにくいとき
+
+ここまでの伝え方を知っていても、文句を言いにくい場面はあります。
+
+### 上司自身が不満の原因のとき
+
+上司のやり方への不満も、上司の行動を原因の欄に置けば、ほかの不満と同じ形で伝えられます。
+たとえば1on1のリスケが続いているなら、「リスケが続いて相談したいことが溜まっているので、1on1の時間を固定したいです」と言えます。
+
+上司本人に言いにくい内容なら、上司の上司や人事に相談してもかまいません。
+
+### 言っても変わらなかったとき
+
+一度言って変わらなかったときは、なぜ変わらないのかを上司に聞いてください。
+上司の権限で決められないのか、ほかの仕事を優先したのかで、次にやることが変わります。
+
+上司の権限で決められないなら、上司から上の人に持ち上げてもらうよう頼めます。
+ほかの仕事を優先したのなら、影響を数字や具体例で補って、もう一度相談できます。
+レビュー待ちで止まったPRの数や、オンコールで夜中に起こされた回数は、上司が優先順位を見直すときの材料です。
+
+何度伝えても変わらないなら、その会社でやりたいことができるかを考え直す材料になります。
+言うべきことを言ったうえでの結論なので、会社にとっても突然の退職にはなりません。
+
+### 評価が下がるのが怖いとき
+
+文句を言ったら評価が下がるのでは、と心配になるかもしれません。
+評価が心配なときほど、課題の形で伝えてください。
+原因と影響とやりたいことがそろった不満は、チームをよくするための提案として受け取られやすくなります。
+
+黙って我慢しても、我慢したことは上司に見えないので、評価にはつながりません。
 
 ## 会社と上司の使い方
 
@@ -495,5 +769,24 @@ Xには自分のやりたいことを入れてください。
 
 ## 次の1on1で言うこと
 
-3つを一度に全部やる必要はありません。
+1on1のドキュメントに次のひな形を貼っておくと、話したいことを書き始めやすくなります。
+
+```markdown
+## 前回の続き
+- 渡した課題:
+- どうなったか:
+
+## 違和感があること
+- 原因:
+- 影響:
+- やりたいこと:
+
+## キャリアの相談
+- 興味があること:
+- 会社の成果に繋げるなら:
+```
+
+前回の続きを先頭に置いたのは、渡した課題を1on1の最初に確かめるためです。
+
+3つの伝え方を一度に全部やる必要も、ひな形の欄を毎回すべて埋める必要もありません。
 次の1on1で、まずは1つだけ「実は…」と違和感を口に出してみてください。
